@@ -25,8 +25,8 @@ class MorseKey {
 
         bool equality_helper(const MorseKey& morse_key);
 
-        // friend class MorseNode;
-        // friend class MorseCode;
+        friend class MorseNode;
+        friend class MorseCode;
     public:
         MorseKey();
         MorseKey(char, std::string, bool&);
