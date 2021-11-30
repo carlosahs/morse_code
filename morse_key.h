@@ -30,6 +30,8 @@ class MorseKey {
         MorseKey(char, std::string, bool&);
         MorseKey(const MorseKey&);
 
+        char get_utf8();
+
         bool operator==(const MorseKey&);
         bool operator!=(const MorseKey&);
         bool operator>(const MorseKey&);

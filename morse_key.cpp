@@ -38,6 +38,12 @@ MorseKey::MorseKey(const MorseKey& morse_key) {
 }
 // <<< Constructor definitions
 
+// >>> public methods definitions
+char MorseKey::get_utf8() {
+    return utf8;
+}
+// <<< public methods definitions
+
 bool MorseKey::operator==(const MorseKey& morse_key) {
     if (utf8 == morse_key.utf8) {
         for (int i = 0; i < MORSE_KEY_LIMIT; i++) {
