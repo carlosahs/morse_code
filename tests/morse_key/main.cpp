@@ -66,7 +66,7 @@ int main() {
     std::cout << "\nTESTS for < operator\n";
 
     MorseKey morse_key = morse_keys[0];
-    for (int i = 1; i < morse_keys.size() - 1; i++) {
+    for (int i = 1; i < morse_keys.size(); i++) {
         if (morse_key < morse_keys[i]) {
             std::cout << "SUCCESS: " << morse_key.get_utf8()
                       << "'s Morse key is lower than " << morse_keys[i].get_utf8()
