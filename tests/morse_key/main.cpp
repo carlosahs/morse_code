@@ -32,5 +32,17 @@ int main() {
         }
     }
 
-    // perform testing of overloaded operators on MorseKey
+    // >>> perform testing of overloaded operators on MorseKey
+    // == operator
+    for (MorseKey morse_key : morse_keys) {
+        if (morse_key == morse_key) {
+            std::cout << "SUCCESS: " << morse_key.get_utf8() 
+                      << " is equal to itself\n";
+        } else {
+            std::cout << "FAILED: comparison failed\n";
+        }
+    }
+
+    // != operator
+    // <<< perform testing of overloaded operators on MorseKey
 }
