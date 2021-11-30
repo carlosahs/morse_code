@@ -23,6 +23,8 @@ class MorseKey {
         char utf8;
         MorseSignal key[MORSE_KEY_LIMIT] = { NONE };
 
+        bool equality_helper(const MorseKey& morse_key);
+
         friend class MorseNode;
         friend class MorseCode;
     public:

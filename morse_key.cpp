@@ -38,13 +38,8 @@ MorseKey::MorseKey(const MorseKey& morse_key) {
 }
 // <<< Constructor definitions
 
-// >>> public methods definitions
-char MorseKey::get_utf8() {
-    return utf8;
-}
-// <<< public methods definitions
-
-bool MorseKey::operator==(const MorseKey& morse_key) {
+// >>> private methods definition
+bool MorseKey::equality_helper(const MorseKey& morse_key) {
     if (utf8 == morse_key.utf8) {
         for (int i = 0; i < MORSE_KEY_LIMIT; i++) {
             if (key[i] != morse_key.key[i]) {
@@ -57,19 +52,21 @@ bool MorseKey::operator==(const MorseKey& morse_key) {
 
     return false;
 }
+// <<< private methods definition
+
+// >>> public methods definitions
+char MorseKey::get_utf8() {
+    return utf8;
+}
+// <<< public methods definitions
+
+// >>> operator overloading definitions
+bool MorseKey::operator==(const MorseKey& morse_key) {
+    return equality_helper(morse_key);
+}
 
 bool MorseKey::operator!=(const MorseKey& morse_key) {
-    if (utf8 == morse_key.utf8) {
-        for (int i = 0; i < MORSE_KEY_LIMIT; i++) {
-            if (key[i] != morse_key.key[i]) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    return true;
+    return !equality_helper(morse_key);
 }
 
 bool MorseKey::operator>(const MorseKey& morse_key) {
@@ -123,3 +120,4 @@ bool MorseKey::operator<(const MorseKey& morse_key) {
             return true;
     }
 }
+// <<< operator overloading definitions
