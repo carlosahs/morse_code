@@ -44,5 +44,15 @@ int main() {
     }
 
     // != operator
+    MorseKey a = morse_keys[0];
+    for (int i = 1; i < morse_keys.size(); i++) {
+        if (a != morse_keys[i]) {
+            std::cout << "SUCCESS: " << a.get_utf8()
+                      << " is not equal to " << morse_keys[i].get_utf8()
+                      << "\n";
+        } else {
+            std::cout << "FAILED: comparison failed\n";
+        }
+    }
     // <<< perform testing of overloaded operators on MorseKey
 }
