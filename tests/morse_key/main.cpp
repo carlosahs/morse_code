@@ -32,6 +32,11 @@ int main() {
         }
     }
 
+    // Return 1 if file couldn't be read
+    if (!vowels_file.is_open()) {
+        return 1;
+    }
+
     // Remove duplicate data
     morse_keys.pop_back();
 
