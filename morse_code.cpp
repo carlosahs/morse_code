@@ -1,10 +1,7 @@
 #include "morse_code.h"
 
-MorseCode::MorseCode() {
-    root = new MorseNode();
-}
-
-bool MorseCode::retrieve(const MorseKey& key, MorseNode* node) {
+// >>> private methods
+bool MorseCode::retrieve(const MorseKey& key, MorseNode*& node) {
     while (node != 0 && node->key != key) {
         if (node->key < key) {
             node = node->right;
@@ -20,7 +17,7 @@ bool MorseCode::retrieve(const MorseKey& key, MorseNode* node) {
     return true;
 }
 
-bool MorseCode::add(MorseKey key, MorseNode* node) {
+bool MorseCode::add(MorseKey key, MorseNode*& node) {
     while (node != 0) {
         if (node->key < key) {
             node = node->right;
@@ -35,7 +32,9 @@ bool MorseCode::add(MorseKey key, MorseNode* node) {
 
     return true;
 }
+// <<< private methods
 
+// >>> public methods
 bool MorseCode::retrieve_key(const MorseKey& key) {
     switch (key.key[0]) {
         case DOT:
@@ -57,3 +56,4 @@ bool MorseCode::add_key(MorseKey key) {
             return false;
     }
 }
+// <<< public methods

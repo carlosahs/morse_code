@@ -15,8 +15,8 @@ class MorseCode {
 
         u32 root_idx;
 
-        bool retrieve(const MorseKey&, MorseNode*);
-        bool add(MorseKey, MorseNode*);
+        bool retrieve(const MorseKey&, MorseNode*&);
+        bool add(MorseKey, MorseNode*&);
 
         void rotate(MorseNode*&, MorseNode*&);
     public:
