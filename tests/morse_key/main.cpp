@@ -54,5 +54,33 @@ int main() {
             std::cout << "FAILED: comparison failed\n";
         }
     }
+
+    // < operator
+    MorseKey morse_key = morse_keys[0];
+    for (int i = 1; i < morse_keys.size(); i++) {
+        if (morse_key < morse_keys[i]) {
+            std::cout << "SUCCESS: " << morse_key.get_utf8()
+                      << "'s Morse key is lower than " << morse_keys[i].get_utf8()
+                      << "'s Morse key\n";
+        } else {
+            std::cout << "FAILED: comparison failed\n";
+        }
+
+        morse_key = morse_keys[i];
+    }
+
+    // > operator
+    morse_key = morse_keys[morse_keys.size() - 1];
+    for (int i = morse_keys.size() - 2; i >= 0; i--) {
+        if (morse_key > morse_keys[i]) {
+            std::cout << "SUCCESS: " << morse_key.get_utf8()
+                      << "'s Morse key is greater than " << morse_keys[i].get_utf8()
+                      << "'s Morse key\n";
+        } else {
+            std::cout << "FAILED: comparison failed\n";
+        }
+
+        morse_key = morse_keys[i];
+    }
     // <<< perform testing of overloaded operators on MorseKey
 }
