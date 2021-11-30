@@ -10,6 +10,7 @@
 class MorseNode {
     private:
         MorseKey key;
+        MorseNode* parent;
         MorseNode* right;
         MorseNode* left;
 
@@ -17,7 +18,7 @@ class MorseNode {
     public:
         MorseNode();
         MorseNode(MorseKey);
-        MorseNode(MorseKey, MorseNode*, MorseNode*);
+        MorseNode(MorseKey, MorseNode*, MorseNode*, MorseNode*);
 };
 
 #endif
