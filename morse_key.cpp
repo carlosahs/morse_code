@@ -1,5 +1,6 @@
 #include "morse_key.h"
 
+// >>> Constructor definitions
 MorseKey::MorseKey() {
     utf8 = ' ';
 }
@@ -7,11 +8,11 @@ MorseKey::MorseKey() {
 MorseKey::MorseKey(char symbol, std::string signals) {
     utf8 = symbol;
     
-    if (signals.size() <= MORSE_KEY_LIMIT) {
-        bool valid = true;
+    if (signals.size() <= MORSE_KEY_LIMIT && signals.size() > 0) {
+        bool is_valid = true;
 
         for (int i = 0; i < signals.size(); i++) {
-            switch (signals.at(1)) {
+            switch (signals.at(i)) {
                 case '.':
                     key[i] = DOT;
                     break;
@@ -19,12 +20,11 @@ MorseKey::MorseKey(char symbol, std::string signals) {
                     key[i] = DASH;
                     break;
                 default:
-                    key[i] = NONE;
-                    valid = false;
+                    is_valid = false;
                     break;
             }
 
-            if (!valid) {
+            if (!is_valid) {
                 for (int j = 0; j < i; j++) {
                     key[j] = NONE;
                 }
@@ -41,6 +41,7 @@ MorseKey::MorseKey(const MorseKey& morse_key) {
         key[i] = morse_key.key[i];
     }
 }
+// <<< Constructor definitions
 
 bool MorseKey::operator==(const MorseKey& morse_key) {
     if (utf8 == morse_key.utf8) {
