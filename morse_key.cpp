@@ -5,12 +5,10 @@ MorseKey::MorseKey() {
     utf8 = ' ';
 }
 
-MorseKey::MorseKey(char symbol, std::string signals) {
+MorseKey::MorseKey(char symbol, std::string signals, bool& success) {
     utf8 = symbol;
     
     if (signals.size() <= MORSE_KEY_LIMIT && signals.size() > 0) {
-        bool is_valid = true;
-
         for (int i = 0; i < signals.size(); i++) {
             switch (signals.at(i)) {
                 case '.':
@@ -20,14 +18,11 @@ MorseKey::MorseKey(char symbol, std::string signals) {
                     key[i] = DASH;
                     break;
                 default:
-                    is_valid = false;
+                    success = false;
                     break;
             }
 
-            if (!is_valid) {
-                for (int j = 0; j < i; j++) {
-                    key[j] = NONE;
-                }
+            if (!success) {
                 break;
             }
         }

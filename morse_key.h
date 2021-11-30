@@ -27,7 +27,7 @@ class MorseKey {
         friend class MorseCode;
     public:
         MorseKey();
-        MorseKey(char, std::string);
+        MorseKey(char, std::string, bool&);
         MorseKey(const MorseKey&);
 
         bool operator==(const MorseKey&);
