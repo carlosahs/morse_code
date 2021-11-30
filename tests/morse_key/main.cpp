@@ -34,6 +34,8 @@ int main() {
 
     // >>> perform testing of overloaded operators on MorseKey
     // == operator
+    std::cout << "\nTESTS for == operator\n";
+
     for (MorseKey morse_key : morse_keys) {
         if (morse_key == morse_key) {
             std::cout << "SUCCESS: " << morse_key.get_utf8() 
@@ -44,6 +46,8 @@ int main() {
     }
 
     // != operator
+    std::cout << "\nTESTS for != operator\n";
+
     MorseKey a = morse_keys[0];
     for (int i = 1; i < morse_keys.size(); i++) {
         if (a != morse_keys[i]) {
@@ -56,6 +60,8 @@ int main() {
     }
 
     // < operator
+    std::cout << "\nTESTS for < operator\n";
+
     MorseKey morse_key = morse_keys[0];
     for (int i = 1; i < morse_keys.size(); i++) {
         if (morse_key < morse_keys[i]) {
@@ -70,6 +76,8 @@ int main() {
     }
 
     // > operator
+    std::cout << "\nTESTS for > operator\n";
+
     morse_key = morse_keys[morse_keys.size() - 1];
     for (int i = morse_keys.size() - 2; i >= 0; i--) {
         if (morse_key > morse_keys[i]) {
