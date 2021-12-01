@@ -78,6 +78,16 @@ int MorseCode::balance_factor(MorseNode* node) {
 
     return node->left->height - node->right->height;
 }
+
+MorseNode* MorseCode::min_key_node(MorseNode* node) {
+    MorseNode* copy = node;
+
+    while (copy->left != 0) {
+        copy = copy->left;
+    }
+
+    return copy;
+}
 // <<< private methods
 
 // >>> public methods

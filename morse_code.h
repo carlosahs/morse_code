@@ -17,6 +17,8 @@ class MorseCode {
 
         int max_height(int, int);
         int balance_factor(MorseNode*);
+
+        MorseNode* min_key_node(MorseNode*);
     public:
         MorseCode();
         MorseCode(bool);
