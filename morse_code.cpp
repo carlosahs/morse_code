@@ -1,5 +1,15 @@
 #include "morse_code.h"
 
+// >>> constructore definitions
+MorseCode::MorseCode() {
+    root = 0;
+}
+
+MorseCode::~MorseCode() {
+    delete root;
+}
+// <<< constructore definitions
+
 // >>> private methods
 void MorseCode::add(MorseKey key, MorseNode*& node) {
     if (node == 0) {
