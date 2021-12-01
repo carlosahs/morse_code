@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <map>
 
 #include "morse_key.h"
 #include "morse_node.h"
@@ -22,6 +23,7 @@ class MorseCode {
         void right_rotate(MorseNode*&);
         void delete_(MorseKey, MorseNode*&);
         void print(MorseNode*, str, bool);
+        void retrieve_key(char, MorseNode*);
 
         int max_height(int, int);
         int balance_factor(MorseNode*);
@@ -34,6 +36,7 @@ class MorseCode {
 
         void add_key(MorseKey);
         void delete_key(MorseKey);
+        void retrieve_by_utf8(char);
         void print_morse();
         void read_morse_code(str);
 };

@@ -156,6 +156,9 @@ void MorseCode::print(MorseNode* node, str level, bool right_left) {
     }
 }
 
+void MorseCode::retrieve_key(char utf8, MorseNode* node) {
+}
+
 int MorseCode::max_height(int a, int b) {
     return (a > b) ? a : b;
 }
@@ -194,6 +197,10 @@ void MorseCode::add_key(MorseKey key) {
 
 void MorseCode::delete_key(MorseKey key) {
     delete_(key, root);
+}
+
+void MorseCode::retrieve_by_utf8(char utf8) {
+    retrieve(utf8, root);
 }
 
 void MorseCode::print_morse() {
