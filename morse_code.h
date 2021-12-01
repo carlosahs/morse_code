@@ -34,6 +34,7 @@ class MorseCode {
         void add_key(MorseKey);
         void delete_key(MorseKey);
         void print_morse();
+        void read_morse_code(str);
 };
 
 #endif
