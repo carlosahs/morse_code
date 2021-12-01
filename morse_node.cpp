@@ -6,7 +6,7 @@ MorseNode::MorseNode() {
     right = 0;
     left = 0;
 
-    height = 0;
+    height = 1;
 }
 
 MorseNode::MorseNode(MorseKey morse_key) {
@@ -15,7 +15,7 @@ MorseNode::MorseNode(MorseKey morse_key) {
     right = 0;
     left = 0;
 
-    height = 0;
+    height = 1;
 }
 
 MorseNode::MorseNode(MorseKey morse_key, 
@@ -26,5 +26,5 @@ MorseNode::MorseNode(MorseKey morse_key,
     left = left_node;
     right = right_node;
 
-    height = 0;
+    height = 1;
 }
