@@ -201,7 +201,7 @@ void MorseCode::delete_key(MorseKey key) {
 }
 
 void MorseCode::retrieve_by_utf8(char utf8) {
-    retrieve(utf8, root);
+    // retrieve(utf8, root);
 }
 
 void MorseCode::print_morse() {
