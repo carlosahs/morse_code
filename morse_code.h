@@ -14,6 +14,7 @@ class MorseCode {
         void add(MorseKey, MorseNode*&);
         void left_rotate(MorseNode*&);
         void right_rotate(MorseNode*&);
+        void delete_(MorseNode*&, MorseKey);
 
         int max_height(int, int);
         int balance_factor(MorseNode*);
