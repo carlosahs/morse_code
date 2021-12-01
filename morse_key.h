@@ -5,6 +5,8 @@
 
 #define MORSE_KEY_LIMIT 8
 
+typedef std::string str;
+
 /**
  * Defines the possible morse signals
  */
@@ -29,10 +31,12 @@ class MorseKey {
         friend class MorseCode;
     public:
         MorseKey();
-        MorseKey(char, std::string, bool&);
+        MorseKey(char, str, bool&);
         MorseKey(const MorseKey&);
 
         char get_utf8();
+
+
 
         bool operator==(const MorseKey&);
         bool operator!=(const MorseKey&);
