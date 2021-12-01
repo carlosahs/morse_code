@@ -14,7 +14,8 @@ void MorseCode::add(MorseKey key, MorseNode*& node) {
         return; // it is not allowed to add repeated keys in Morse code
     }
 
-    node->height = max_height(node->left->height, node->right->height) + 1;
+    node->height = max_height(get_node_height(node->left), 
+                              get_node_height(node->right)) + 1;
 
     int factor = balance_factor(node);
 
@@ -44,8 +45,10 @@ void MorseCode::left_rotate(MorseNode*& y) {
     x->left = y;
     y->right = z;
 
-    y->height = max_height(y->left->height, y->right->height) + 1;
-    x->height = max_height(x->left->height, x->right->height) + 1;
+    y->height = max_height(get_node_height(y->left),
+                           get_node_height(y->right)) + 1;
+    x->height = max_height(get_node_height(x->left), 
+                           get_node_height(x->right)) + 1;
 
     y = x;
 }
@@ -57,8 +60,10 @@ void MorseCode::right_rotate(MorseNode*& y) {
     x->right = y;
     y->left = z;
 
-    y->height = max_height(y->left->height, y->right->height) + 1;
-    x->height = max_height(x->left->height, x->right->height) + 1;
+    y->height = max_height(get_node_height(y->left), 
+                           get_node_height(y->right)) + 1;
+    x->height = max_height(get_node_height(x->left), 
+                           get_node_height(x->right)) + 1;
 
     y = x;
 }
@@ -98,7 +103,8 @@ void MorseCode::delete_(MorseKey key, MorseNode*& node) {
         return;
     }
 
-    root->height = max_height(node->left->height, node->right->height);
+    node->height = max_height(get_node_height(node->left), 
+                              get_node_height(node->right)) + 1;
 
     int factor = balance_factor(node);
 
@@ -150,6 +156,14 @@ int MorseCode::balance_factor(MorseNode* node) {
     }
 
     return node->left->height - node->right->height;
+}
+
+int MorseCode::get_node_height(MorseNode* node) {
+    if (node == 0) {
+        return 0;
+    }
+
+    return node->height;
 }
 
 MorseNode* MorseCode::min_key_node(MorseNode* node) {
