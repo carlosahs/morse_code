@@ -81,14 +81,7 @@ int MorseCode::balance_factor(MorseNode* node) {
 // <<< private methods
 
 // >>> public methods
-bool MorseCode::add_key(MorseKey key) {
-    switch (key.key[0]) {
-        case DOT:
-            return add(key, root->left);
-        case DASH:
-            return add(key, root->right);
-        case NONE: // cannot add key that starts with a NONE signal
-            return false;
-    }
+void MorseCode::add_key(MorseKey key) {
+    add(key, root);
 }
 // <<< public methods

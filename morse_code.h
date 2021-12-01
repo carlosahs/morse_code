@@ -23,7 +23,7 @@ class MorseCode {
         MorseCode(const MorseCode&);
         ~MorseCode();
 
-        bool add_key(MorseKey);
+        void add_key(MorseKey);
 };
 
 #endif
