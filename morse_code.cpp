@@ -12,6 +12,10 @@ MorseCode::~MorseCode() {
 
 // >>> private methods
 void MorseCode::add(MorseKey key, MorseNode*& node) {
+    if (!utf8_to_key.count(key.utf8)) {
+        utf8_to_key[key.utf8] = key.get_signals();
+    }
+
     if (node == 0) {
         node = new MorseNode(key);
         return;
@@ -80,6 +84,10 @@ void MorseCode::right_rotate(MorseNode*& y) {
 }
 
 void MorseCode::delete_(MorseKey key, MorseNode*& node) {
+    if (utf8_to_key.count(key.utf8)) {
+        utf8_to_key.erase(key.utf8);
+    }
+
     if (node == 0) {
         return;
     }       

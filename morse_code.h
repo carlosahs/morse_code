@@ -18,6 +18,8 @@ class MorseCode {
     private:
         MorseNode* root;
 
+        std::map<char, str> utf8_to_key;
+
         void add(MorseKey, MorseNode*&);
         void left_rotate(MorseNode*&);
         void right_rotate(MorseNode*&);
