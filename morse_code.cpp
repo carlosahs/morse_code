@@ -1,20 +1,44 @@
 #include "morse_code.h"
 
 // >>> private methods
-bool MorseCode::add(MorseKey key, MorseNode*& node) {
-    while (node != 0) {
-        if (node->key < key) {
-            node = node->right;
-        } else if (node->key > key) {
-            node = node->left;
-        } else {
-            return false; // duplicate morse keys are not allowed
-        }
+void MorseCode::add(MorseKey key, MorseNode*& node) {
+    if (node == 0) {
+        node = new MorseNode(key);
     }
 
-    node = new MorseNode(key);
+    if (key < node->key) {
+        add(key, node->left);
+    } else if (key > node->key) {
+        add(key, node->right);
+    } else if (key == node->key) {
+        return; // it is not allowed to add repeated keys in Morse code
+    }
 
-    return true;
+    node->height = max_height(node->left->height, node->right->height) + 1;
+
+    int factor = balance_factor(node);
+
+    if (factor > 1) {
+        if (key < node->left->key) {
+            right_rotate(node);
+        } else if (key > node->left->key) {
+            left_rotate(node->left);
+            right_rotate(node);
+        }
+
+        return;
+    }
+
+    if (factor < -1) {
+        if (key > node->right->key) {
+            left_rotate(node);
+        } else if (key < node->right->key) {
+            right_rotate(node->right);
+            left_rotate(node);
+        }
+
+        return;
+    }
 }
 
 void MorseCode::left_rotate(MorseNode*& y) {

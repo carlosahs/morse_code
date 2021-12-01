@@ -11,8 +11,7 @@ class MorseCode {
     private:
         MorseNode* root;
 
-        bool add(MorseKey, MorseNode*&);
-
+        void add(MorseKey, MorseNode*&);
         void left_rotate(MorseNode*&);
         void right_rotate(MorseNode*&);
 
