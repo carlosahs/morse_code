@@ -28,3 +28,8 @@ MorseNode::MorseNode(MorseKey morse_key,
 
     height = 1;
 }
+
+MorseNode::~MorseNode() {
+   delete left;
+   delete right;
+}

@@ -23,6 +23,7 @@ class MorseNode {
         MorseNode();
         MorseNode(MorseKey);
         MorseNode(MorseKey, MorseNode*, MorseNode*);
+        ~MorseNode();
 };
 
 #endif
