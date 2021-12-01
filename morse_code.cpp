@@ -121,6 +121,25 @@ void MorseCode::delete_(MorseKey key, MorseNode*& node) {
     }
 }
 
+void MorseCode::print(MorseNode* node, str level, bool right_left) {
+    if (node != 0) {
+        std::cout << level;
+
+        if (right_left) {
+            std::cout << "R: ";
+        } else {
+            std::cout << "L: ";
+        }
+
+        level += "   ";
+
+        std::cout << node->key.utf8 << "\n";
+
+        print(node->left, level, false);
+        print(node->right, level, true);
+    }
+}
+
 int MorseCode::max_height(int a, int b) {
     return (a > b) ? a : b;
 }
