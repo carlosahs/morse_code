@@ -19,7 +19,7 @@ class MorseCode {
         void left_rotate(MorseNode*&);
         void right_rotate(MorseNode*&);
         void delete_(MorseKey, MorseNode*&);
-        void print(MorseNode*&, str);
+        void print(MorseNode*, str, bool);
 
         int max_height(int, int);
         int balance_factor(MorseNode*);
