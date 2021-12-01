@@ -25,8 +25,6 @@ void MorseCode::add(MorseKey key, MorseNode*& node) {
             left_rotate(node->left);
             right_rotate(node);
         }
-
-        return;
     }
 
     if (factor < -1) {
@@ -36,8 +34,6 @@ void MorseCode::add(MorseKey key, MorseNode*& node) {
             right_rotate(node->right);
             left_rotate(node);
         }
-
-        return;
     }
 }
 
