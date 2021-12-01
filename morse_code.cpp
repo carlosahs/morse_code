@@ -89,6 +89,8 @@ void MorseCode::delete_(MorseNode*& node, MorseKey key) {
 
             node->key = min->key;
             delete_(node->right, min->key);
+
+            delete min;
         }
     }
 
