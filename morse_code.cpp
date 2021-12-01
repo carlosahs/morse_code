@@ -62,6 +62,14 @@ void MorseCode::right_rotate(MorseNode*& y) {
 u32 MorseCode::max_height(u32 a, u32 b) {
     return (a > b) ? a : b;
 }
+
+u32 MorseCode::balance_factor(MorseNode* node) {
+    if (node == 0) {
+        return 0;
+    }
+
+    return node->left->height - node->right->height;
+}
 // <<< private methods
 
 // >>> public methods

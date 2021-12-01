@@ -20,6 +20,7 @@ class MorseCode {
         void right_rotate(MorseNode*&);
 
         u32 max_height(u32, u32);
+        u32 balance_factor(MorseNode*);
     public:
         MorseCode();
         MorseCode(bool);
