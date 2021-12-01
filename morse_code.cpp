@@ -199,4 +199,31 @@ void MorseCode::delete_key(MorseKey key) {
 void MorseCode::print_morse() {
     print(root, "", true);
 }
+
+void MorseCode::read_morse_code(str fname) {
+    std::ifstream file_stream;
+
+    file_stream.open(fname);
+
+    if (file_stream.is_open()) {
+        while (file_stream.good()) {
+            char utf8;
+            str signals;
+
+            bool is_valid = true;
+
+            file_stream >> utf8 >> signals;
+
+            MorseKey morse_key = MorseKey(utf8, signals, is_valid);
+
+            if (is_valid) {
+                add(morse_key, root);
+            } else {
+                std::cout << "Morse key contains invalid signals!\n";
+            }
+        }
+    } else {
+        std::cout << "Failed to open file\n";
+    }
+}
 // <<< public methods
