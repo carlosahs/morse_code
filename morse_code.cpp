@@ -171,4 +171,8 @@ void MorseCode::add_key(MorseKey key) {
 void MorseCode::delete_key(MorseKey key) {
     delete_(key, root);
 }
+
+void MorseCode::print_morse() {
+    print(root, "", true);
+}
 // <<< public methods
