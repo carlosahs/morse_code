@@ -2,6 +2,7 @@
 #define MORSE_CODE_H
 
 #include <string>
+#include <fstream>
 #include <iostream>
 
 #include "morse_key.h"
