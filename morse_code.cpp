@@ -14,6 +14,7 @@ MorseCode::~MorseCode() {
 void MorseCode::add(MorseKey key, MorseNode*& node) {
     if (node == 0) {
         node = new MorseNode(key);
+        return;
     }
 
     if (key < node->key) {
