@@ -13,9 +13,6 @@ class MorseCode {
     private:
         MorseNode* root;
 
-        u32 root_idx;
-        u32 nodes;
-
         bool retrieve(const MorseKey&, MorseNode*&);
         bool add(MorseKey, MorseNode*&);
 
