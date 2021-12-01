@@ -3,8 +3,6 @@
 
 #include "morse_key.h"
 
-typedef unsigned int u32;
-
 /**
  * Defines a bst-like node so that it is easier to define a custom
  * Morse code
@@ -16,7 +14,7 @@ class MorseNode {
         MorseNode* right;
         MorseNode* left;
 
-        u32 height;
+        int height;
 
         friend class MorseCode;
     public:
