@@ -4,7 +4,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include <map>
+#include <unordered_map>
 
 #include "morse_key.h"
 #include "morse_node.h"
@@ -18,7 +18,7 @@ class MorseCode {
     private:
         MorseNode* root;
 
-        std::map<char, str> utf8_to_key;
+        std::unordered_map<char, str> utf8_to_key;
 
         void add(MorseKey, MorseNode*&);
         void left_rotate(MorseNode*&);
