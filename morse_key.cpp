@@ -58,6 +58,26 @@ bool MorseKey::equality_helper(const MorseKey& morse_key) {
 char MorseKey::get_utf8() {
     return utf8;
 }
+
+str MorseKey::get_signals() {
+    str signals = "";
+
+    for (int i = 0; i < MORSE_KEY_LIMIT; i++) {
+        switch (key[i]) {
+            case DASH:
+                signals += "_";
+                break;
+            case DOT:
+                signals += ".";
+                break;
+            case NONE:
+                signals += "";
+                break;
+        }
+    }
+
+    return signals;
+}
 // <<< public methods definitions
 
 // >>> operator overloading definitions

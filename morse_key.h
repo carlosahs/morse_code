@@ -36,7 +36,7 @@ class MorseKey {
 
         char get_utf8();
 
-
+        str get_signals();
 
         bool operator==(const MorseKey&);
         bool operator!=(const MorseKey&);
