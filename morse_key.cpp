@@ -71,7 +71,6 @@ str MorseKey::get_signals() {
                 signals += ".";
                 break;
             case NONE:
-                signals += "";
                 break;
         }
     }
