@@ -165,7 +165,7 @@ int MorseCode::balance_factor(MorseNode* node) {
         return 0;
     }
 
-    return node->left->height - node->right->height;
+    return get_node_height(node->left) - get_node_height(node->right);
 }
 
 int MorseCode::get_node_height(MorseNode* node) {
