@@ -11,7 +11,6 @@ class MorseCode {
     private:
         MorseNode* root;
 
-        bool retrieve(const MorseKey&, MorseNode*&);
         bool add(MorseKey, MorseNode*&);
 
         void left_rotate(MorseNode*&);
@@ -25,10 +24,7 @@ class MorseCode {
         MorseCode(const MorseCode&);
         ~MorseCode();
 
-        bool retrieve_key(const MorseKey&);
         bool add_key(MorseKey);
-        bool delete_key(char);
-        bool update_key(char);
 };
 
 #endif
