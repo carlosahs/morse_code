@@ -29,8 +29,6 @@ class MorseCode {
         MorseNode* min_key_node(MorseNode*);
     public:
         MorseCode();
-        MorseCode(bool);
-        MorseCode(const MorseCode&);
         ~MorseCode();
 
         void add_key(MorseKey);
