@@ -33,6 +33,19 @@ bool MorseCode::add(MorseKey key, MorseNode*& node) {
     return true;
 }
 
+void MorseCode::left_rotate(MorseNode*& y) {
+    MorseNode* x = y->right;
+    MorseNode* z = x->left;
+
+    x->left = y;
+    y->right = z;
+
+    y->height = max_height(y->left->height, y->right->height) + 1;
+    x->height = max_height(x->left->height, x->right->height) + 1;
+
+    y = x;
+}
+
 void MorseCode::right_rotate(MorseNode*& y) {
     MorseNode* x = y->left;
     MorseNode* z = x->right;

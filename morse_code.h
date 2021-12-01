@@ -19,6 +19,7 @@ class MorseCode {
         bool retrieve(const MorseKey&, MorseNode*&);
         bool add(MorseKey, MorseNode*&);
 
+        void left_rotate(MorseNode*&);
         void right_rotate(MorseNode*&);
 
         u32 max_height(u32, u32);
