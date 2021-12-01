@@ -63,15 +63,15 @@ void MorseCode::right_rotate(MorseNode*& y) {
     y = x;
 }
 
-void MorseCode::delete_(MorseNode*& node, MorseKey key) {
+void MorseCode::delete_(MorseKey key, MorseNode*& node) {
     if (node == 0) {
         return;
     }       
 
     if (key < node->key) {
-        delete_(node->left, key);
+        delete_(key, node->left);
     } else if (key > node->key) {
-        delete_(node->right, key);
+        delete_(key, node->right);
     } else {
         if ((node->left == 0) || (node->right == 0)) {
             MorseNode* copy = node->left == 0 ? node->right : node->left;
@@ -88,7 +88,7 @@ void MorseCode::delete_(MorseNode*& node, MorseKey key) {
             MorseNode* min = min_key_node(root->right);
 
             node->key = min->key;
-            delete_(node->right, min->key);
+            delete_(min->key, node->right);
 
             delete min;
         }
@@ -147,5 +147,9 @@ MorseNode* MorseCode::min_key_node(MorseNode* node) {
 // >>> public methods
 void MorseCode::add_key(MorseKey key) {
     add(key, root);
+}
+
+void MorseCode::delete_key(MorseKey key) {
+    delete_(key, root);
 }
 // <<< public methods
