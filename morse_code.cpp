@@ -32,6 +32,23 @@ bool MorseCode::add(MorseKey key, MorseNode*& node) {
 
     return true;
 }
+
+void MorseCode::right_rotate(MorseNode*& y) {
+    MorseNode* x = y->left;
+    MorseNode* z = x->right;
+
+    x->right = y;
+    y->left = z;
+
+    y->height = max_height(y->left->height, y->right->height) + 1;
+    x->height = max_height(x->left->height, x->right->height) + 1;
+
+    y = x;
+}
+
+u32 MorseCode::max_height(u32 a, u32 b) {
+    return (a > b) ? a : b;
+}
 // <<< private methods
 
 // >>> public methods
