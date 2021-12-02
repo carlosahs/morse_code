@@ -13,7 +13,7 @@ This program allows the user to translate a message in plain english to Morse co
 ## Compilation instructions
 From the root directory run
 ```
-g++ -std=c++14 -O2 interpreter.cpp morse_key.cpp morse_node.cpp morse_code.cpp -o interpreter
+g++ -std=c++14 -O2 interpreter.cpp lib/morse_key.cpp lib/morse_node.cpp lib/morse_code.cpp -o interpreter
 ./interpreter
 ```
 
@@ -55,7 +55,7 @@ a linked list where insertion takes `O(n)` time.
 To compile and run the tests for `MorseKey`, from the root directory run
 ```
 cd tests/morse_key/
-g++ -std=c++14 -O2 main.cpp ../../morse_key.cpp
+g++ -std=c++14 -O2 main.cpp ../../lib/*.cpp
 ./a.out
 ```
 
@@ -63,7 +63,7 @@ g++ -std=c++14 -O2 main.cpp ../../morse_key.cpp
 To compile and run the tests for `MorseCode`, from the root directory run
 ```
 cd tests/morse_code/
-g++ -std=c++14 -O2 main.cpp ../../morse_key.cpp ../../morse_node.cpp ../../morse_code.cpp
+g++ -std=c++14 -O2 main.cpp ../../lib/morse_key.cpp
 ./a.out
 ```
 
