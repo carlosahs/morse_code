@@ -67,8 +67,20 @@ void InterpreterUI::start() {
 
         switch (option) {
             case 1:
+                read_morse();
+                break;
             case 2:
+                create_morse();
+                break;
             case 3:
+                write_morse();
+                break;
+            case 4:
+                translate_utf8_to_morse();
+                break;
+            case 5:
+                translate_morse_to_utf8();
+                break;
             default:
                 break;
         }
