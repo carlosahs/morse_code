@@ -165,7 +165,22 @@ void MorseCode::print(MorseNode* node, str level, bool right_left) {
     }
 }
 
-void MorseCode::retrieve_key(char utf8, MorseNode* node) {
+void MorseCode::retrieve(MorseKey key, MorseNode* node) {
+}
+
+void MorseCode::key_from_str(MorseSignal key[MORSE_KEY_LIMIT], str signals) {
+    for (int i = 0; i < signals.size(); i++) {
+        switch (signals.at(i)) {
+            case '.':
+                key[i] = DOT;
+                break;
+            case '_':
+                key[i] = DASH;
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 int MorseCode::max_height(int a, int b) {
@@ -210,6 +225,9 @@ void MorseCode::delete_key(MorseKey key) {
 
 void MorseCode::retrieve_by_utf8(char utf8) {
     // retrieve(utf8, root);
+}
+
+void MorseCode::retrieve_by_key(str signals) {
 }
 
 void MorseCode::print_morse() {
