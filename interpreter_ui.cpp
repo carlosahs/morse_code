@@ -208,10 +208,10 @@ void InterpreterUI::start() {
                 write_morse(success);
                 break;
             case 4:
-                translate_utf8_to_morse(success);
+                translate_utf8_to_morse();
                 break;
             case 5:
-                translate_morse_to_utf8(success);
+                translate_morse_to_utf8();
                 break;
             default:
                 break;
