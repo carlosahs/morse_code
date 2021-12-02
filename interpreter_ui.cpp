@@ -28,6 +28,29 @@ void InterpreterUI::menu(u32& option) {
         }
     }
 }
+
+void InterpreterUI::read_morse(bool& success) {
+    str fname;
+
+    std::cout << "(If you type 'default', the program will load "
+              << "the international Morse code)\n";
+    std::cout << "Please enter name of file containing Morse code "
+              << "(e.g. 'my_morse.txt'):\n";
+    std::cin >> fname;
+
+    if (fname == "default") {
+        std::cout << "...Reading '" << DEFAULT_MORSE_FILE << "' file\n";
+        morse.read_morse_code(DEFAULT_MORSE_FILE);
+    } else {
+        std::cout << "...Reading '" << fname << "' file\n";
+        morse.read_morse_code(fname);
+    }
+
+    // file either does not exist or is empty
+    if (morse.empty()) {
+        success = false;
+    }
+}
 // <<< private methods
 
 // >>> public methods

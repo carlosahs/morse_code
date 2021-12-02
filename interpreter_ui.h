@@ -12,16 +12,18 @@
 typedef std::string str;
 typedef unsigned int u32;
 
+const str DEFAULT_MORSE_FILE = "international_morse_code.txt";
+
 class InterpreterUI {
     private:
         MorseCode morse;
 
         void menu(u32&);
-        void read_morse();
-        void create_morse();
-        void write_morse();
-        void translate_utf8_to_morse();
-        void translate_morse_to_utf8();
+        void read_morse(bool&);
+        void create_morse(bool&);
+        void write_morse(bool&);
+        void translate_utf8_to_morse(bool&);
+        void translate_morse_to_utf8(bool&);
     public:
         InterpreterUI();
 
