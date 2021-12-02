@@ -25,10 +25,15 @@ int main() {
 
     morse.print_morse();
 
+    // test removal
+    morse.delete_key(a);
+    morse.print_morse();
+
     // a consonants Morse code
     MorseKey b = MorseKey('b', "_._", valid_morse);
     MorseKey c = MorseKey('c', "__.", valid_morse);
 
+    morse.add_key(b);
     morse.add_key(b);
     morse.add_key(c);
 
@@ -69,6 +74,19 @@ int main() {
         }
     } else {
         std::cout << "FAILED: 'v' should've been retrieved\n";
+    }
+
+    retrieved = true;
+    utf8 = morse.retrieve_by_key("_____", retrieved);
+
+    if (retrieved) {
+        if (utf8 == '0') {
+            std::cout << "SUCCESS: '_____' corresponds to '0' char\n";
+        } else {
+            std::cout << "FAILED: '_____' corresponds to a character that is not '0'\n";
+        }
+    } else {
+        std::cout << "FAILED: '0' should've been retrieved\n";
     }
 
     return 0;
