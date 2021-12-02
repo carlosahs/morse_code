@@ -25,6 +25,7 @@ class MorseCode {
         void right_rotate(MorseNode*&);
         void delete_(MorseKey, MorseNode*&);
         void print(MorseNode*, str, bool);
+        void write_helper(MorseNode*, std::ofstream&);
 
         int max_height(int, int);
         int balance_factor(MorseNode*);
@@ -42,6 +43,7 @@ class MorseCode {
         void print_morse();
         void read_morse_code(str);
         void clear();
+        void write_morse_code(str);
 
         str retrieve_by_utf8(char, bool&);
 

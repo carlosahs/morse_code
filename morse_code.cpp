@@ -174,6 +174,16 @@ void MorseCode::print(MorseNode* node, str level, bool right_left) {
     }
 }
 
+void MorseCode::write_helper(MorseNode* node, std::ofstream& file_stream) {
+    if (node != 0) {
+        write_helper(node->left, file_stream);
+        write_helper(node->right, file_stream);
+
+        file_stream << node->key.utf8 << " "
+                    << node->key.get_signals() << "\n";
+    }
+}
+
 int MorseCode::max_height(int a, int b) {
     return (a > b) ? a : b;
 }
@@ -271,6 +281,16 @@ void MorseCode::clear() {
     root = 0;
 
     utf8_to_key.clear();
+}
+
+void MorseCode::write_morse_code(str fname) {
+    std::ofstream file_stream;
+
+    file_stream.open(fname);
+
+    write_helper(root, file_stream);
+
+    file_stream.close();
 }
 
 str MorseCode::retrieve_by_utf8(char utf8, bool& retrieved) {
