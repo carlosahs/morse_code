@@ -7,6 +7,7 @@ MorseCode::MorseCode() {
 
 MorseCode::~MorseCode() {
     delete root;
+    root = 0;
 }
 // <<< constructore definitions
 
@@ -224,7 +225,14 @@ void MorseCode::delete_key(MorseKey key) {
 }
 
 void MorseCode::retrieve_by_utf8(char utf8) {
-    // retrieve(utf8, root);
+    if (utf8_to_key.count(utf8)) {
+        MorseSignal key[MORSE_KEY_LIMIT] = { NONE };
+        str signals = utf8_to_key[utf8];
+
+        retrieve(MorseKey(utf8, signals), root);
+    } else {
+        std::cout << "Character is not part of this Morse code\n";
+    }
 }
 
 void MorseCode::retrieve_by_key(str signals) {
