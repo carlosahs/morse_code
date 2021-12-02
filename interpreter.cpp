@@ -2,9 +2,9 @@
 #include <string>
 #include <vector>
 
-#include "morse_code.h"
-#include "morse_key.h"
-#include "morse_node.h"
+#include "lib/morse_code.h"
+#include "lib/morse_key.h"
+#include "lib/morse_node.h"
 
 typedef std::string str;
 
