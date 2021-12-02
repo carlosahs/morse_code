@@ -291,4 +291,12 @@ char MorseCode::retrieve_by_key(str signals, bool& retrieved) {
 
     return retrieve(key, root, retrieved);
 }
+
+bool MorseCode::empty() {
+    if (root == 0) {
+        return true;
+    }
+
+    return false;
+}
 // <<< public methods

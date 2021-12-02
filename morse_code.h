@@ -46,6 +46,8 @@ class MorseCode {
         str retrieve_by_utf8(char, bool&);
 
         char retrieve_by_key(str, bool&);
+
+        bool empty();
 };
 
 #endif
