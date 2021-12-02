@@ -88,21 +88,23 @@ void InterpreterUI::start() {
     while (option != 0) {
         menu(option);
 
+        bool success = true;
+
         switch (option) {
             case 1:
-                read_morse();
+                read_morse(success);
                 break;
             case 2:
-                create_morse();
+                create_morse(success);
                 break;
             case 3:
-                write_morse();
+                write_morse(success);
                 break;
             case 4:
-                translate_utf8_to_morse();
+                translate_utf8_to_morse(success);
                 break;
             case 5:
-                translate_morse_to_utf8();
+                translate_morse_to_utf8(success);
                 break;
             default:
                 break;
