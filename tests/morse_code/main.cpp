@@ -46,11 +46,9 @@ int main() {
 
     // test retrieval of keys
     bool retrieved = true;
-
     std::string signals = morse.retrieve_by_utf8('a', retrieved);
 
     if (retrieved) {
-        std::cout << signals << "\n";
         if (signals == "._") {
             std::cout << "SUCCESS: 'a' key was retrieved successfully\n";
         } else {
@@ -58,6 +56,19 @@ int main() {
         }
     } else {
         std::cout << "FAILED: 'a' should be in Morse code\n";
+    }
+
+    retrieved = true;
+    char utf8 = morse.retrieve_by_key("..._", retrieved);
+
+    if (retrieved) {
+        if (utf8 == 'v') {
+            std::cout << "SUCCESS: '..._' corresponds to 'v' char\n";
+        } else {
+            std::cout << "FAILED: '..._' corresponds to a character that is not 'v'\n";
+        }
+    } else {
+        std::cout << "FAILED: 'v' should've been retrieved\n";
     }
 
     return 0;
