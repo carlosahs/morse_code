@@ -41,7 +41,7 @@ retrieve a Morse key a string of Morse code? This decision was made to:
    Morse code into the tree in `O(1)` time.
 2. The purpose of storing the Morse code in an AVL tree by a string of Morse code is 
    to give it structure and order, so that in this way the value of a character can be
-   defined according to the user and not to much on the actual numeric value of the 
+   defined according to the user and not too much on the actual numeric value of the 
    character.
 
 ## `interpreter` program
