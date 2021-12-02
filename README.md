@@ -8,6 +8,10 @@ The AVL binary search tree is required since it is important that the tree is
 completely balanced so that the Morse symbols are correctly layout and quickly
 accessed with a time complexity of `O(n * log n)`.
 
+# Morse code translator
+
+# Data structures I used
+
 # Tests
 ## `MorseKey`
 To compile and run the tests for `MorseKey`, from the root directory run
