@@ -280,7 +280,7 @@ str MorseCode::retrieve_by_utf8(char utf8, bool& retrieved) {
         return signals;
     } else {
         retrieved = false;
-        std::cout << "Character is not part of this Morse code\n";
+        std::cout << "Character is not part of this Morse code or has been removed\n";
     }
 
     return "";
