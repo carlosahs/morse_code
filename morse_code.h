@@ -32,7 +32,7 @@ class MorseCode {
 
         MorseNode* min_key_node(MorseNode*);
 
-        char retrieve(MorseKey, MorseNode*);
+        char retrieve(MorseKey&, MorseNode*, bool&);
     public:
         MorseCode();
         ~MorseCode();

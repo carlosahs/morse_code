@@ -170,9 +170,6 @@ void MorseCode::print(MorseNode* node, str level, bool right_left) {
     }
 }
 
-void MorseCode::retrieve(MorseKey key, MorseNode* node) {
-}
-
 int MorseCode::max_height(int a, int b) {
     return (a > b) ? a : b;
 }
@@ -201,6 +198,25 @@ MorseNode* MorseCode::min_key_node(MorseNode* node) {
     }
 
     return copy;
+}
+
+char MorseCode::retrieve(MorseKey& key, MorseNode* node, bool& retrieved) {
+    if (node == 0) {
+        retrieved = false;
+        return ' ';
+    }
+
+    // anonymous keys require to be assigned a char after initialization
+    key.utf8 = node->key.utf8;
+
+    if (key < node->key) {
+        return retrieve(key, node->left, retrieved);
+    } else if (key > node->key) {
+        return retrieve(key, node->right, retrieved);
+    } else {
+        // then the keys are equal
+        return key.utf8;
+    }
 }
 // <<< private methods
 
@@ -263,5 +279,8 @@ str MorseCode::retrieve_by_utf8(char utf8, bool& retrieved) {
 }
 
 char MorseCode::retrieve_by_key(str signals, bool& retrieved) {
+    MorseKey key = MorseKey(signals);
+
+    return retrieve(key, root, retrieved);
 }
 // <<< public methods
