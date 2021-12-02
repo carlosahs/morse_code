@@ -8,17 +8,20 @@
 #include "lib/morse_code.h"
 
 typedef std::string str;
+typedef unsigned int u32;
 
 class InterpreterUI {
     private:
         MorseCode morse;
 
-        void menu();
+        void menu(u32&);
+        void read_morse(str);
+        void create_morse();
     public:
         InterpreterUI();
 
-        void char_to_morse_translation(char, std::vector<str>&);
-        void morse_to_char_translation(str, std::vector<str>&);
+        void utf8_to_morse(char, std::vector<str>&);
+        void morse_to_utf8(str, std::vector<char>&);
         void start();
 };
 
