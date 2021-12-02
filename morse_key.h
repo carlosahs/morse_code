@@ -31,6 +31,7 @@ class MorseKey {
         friend class MorseCode;
     public:
         MorseKey();
+        MorseKey(char, str);
         MorseKey(char, str, bool&);
         MorseKey(const MorseKey&);
 
