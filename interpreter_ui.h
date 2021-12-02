@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "lib/morse_code.h"
+#include "lib/morse_key.h"
 
 #define MAX_OPTION 5
 
