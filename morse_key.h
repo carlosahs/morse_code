@@ -27,11 +27,12 @@ class MorseKey {
 
         bool equality_helper(const MorseKey& morse_key);
 
+        MorseKey(char, str);
+
         friend class MorseNode;
         friend class MorseCode;
     public:
         MorseKey();
-        MorseKey(char, str);
         MorseKey(char, str, bool&);
         MorseKey(const MorseKey&);
 
