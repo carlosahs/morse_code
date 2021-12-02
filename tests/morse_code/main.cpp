@@ -89,5 +89,14 @@ int main() {
         std::cout << "FAILED: '0' should've been retrieved\n";
     }
 
+    morse.delete_key(MorseKey('0', "_____", retrieved));
+    signals = morse.retrieve_by_utf8('0', retrieved);
+
+    if (retrieved) {
+        std::cout << "FAILED: '0' should've been deleted\n";
+    } else {
+        std::cout << "SUCCESS: '0' has been deleted\n";
+    }
+
     return 0;
 }
