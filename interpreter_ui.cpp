@@ -51,6 +51,71 @@ void InterpreterUI::read_morse(bool& success) {
         success = false;
     }
 }
+
+void InterpreterUI::create_morse(bool& success) {
+    bool create_another = true;
+
+    while (create_another) {
+        std::cout << "Type utf-8 char followed by a Morse signal "
+                  << "(e.g. 'a .._.'): \n";
+
+        char utf8;
+        str morse_signal;
+
+        std::cin >> utf8 >> morse_signal;
+
+        bool is_valid = true;
+        MorseKey key = MorseKey(utf8, morse_signal, is_valid);
+
+        if (is_valid) {
+            std::cout << "...Adding " << utf8 << " "
+                      << morse_signal << " Morse key\n";
+            morse.add_key(key);
+        } else {
+            std::cout << "WARNING: The " << morse_signal
+                      << " Morse signal is not valid\n";
+            std::cout << "...It will NOT be added to the Morse code\n";
+
+            success = false;
+        }
+
+        std::cout << "Do you want to add another Morse key?\n";
+        std::cout << "(Type 'yes' if affirmative, else type 'no')\n";
+
+        str user_answer;
+        std::cin >> user_answer;
+
+        if (user_answer == "yes") {
+            success = true;
+
+            std::cout << "...Prepare to add another Morse key\n";
+        } else if (user_answer == "no") {
+            create_another = false;
+        } else {
+            create_another = false;
+
+            std::cout << "...Your answer will be considered as 'no'\n";
+        }
+    }
+}
+
+void InterpreterUI::write_morse(bool& success) {
+    if (morse.empty()) {
+        success = false;
+
+        std::cout << "WARNING: The Morse code is empty\n";
+        std::cout << "...Nothing will be written\n";
+    }
+
+    std::cout << "Type name of file (e.g. 'my_morse.txt')\n";
+
+    str fname;
+    std::cin >> fname;
+
+    morse.write_morse_code(fname);
+
+    std::cout << "...File was written\n";
+}
 // <<< private methods
 
 // >>> public methods
