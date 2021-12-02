@@ -268,4 +268,9 @@ void MorseCode::read_morse_code(str fname) {
         std::cout << "Failed to open file\n";
     }
 }
+
+void MorseCode::clear() {
+    delete root;
+    root = 0;
+}
 // <<< public methods

@@ -43,6 +43,7 @@ class MorseCode {
         void retrieve_by_key(str);
         void print_morse();
         void read_morse_code(str);
+        void clear();
 };
 
 #endif
