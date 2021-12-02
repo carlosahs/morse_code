@@ -46,6 +46,7 @@ int main() {
 
     // test if file is read correctly
     morse.read_morse_code("international_morse_code.txt");
+    morse.write_morse_code("international_morse_code_ordered.txt");
 
     morse.print_morse();
 
