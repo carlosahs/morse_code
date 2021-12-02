@@ -27,6 +27,28 @@ a `txt` file and modify the Morse keys.
 # Morse code translator
 
 # Data structures I used
+## `MorseCode`
+I implemented an AVL tree so that the structure of any Morse code is balanced as it
+should be. The implementation of this tree also helps to get `O(lg n)` time on 
+insertion, deletion, and search operations.
+
+The code allows a user to access a Morse key by a string of signals in `O(lg n)` time, 
+while it also allows them to retrieve a Morse key by a character in `O(1)` time. The 
+latter is achieved by implementing a hash map (`std::unordered_map`). But, why 
+implement a hash map to retrieve a Morse key by a character and then an AVL tree to
+retrieve a Morse key a string of Morse code? This decision was made to:
+1. Identify attempts to insert a Morse key with the same character but a different
+   Morse code into the tree in `O(1)` time.
+2. The purpose of storing the Morse code in an AVL tree by a string of Morse code is 
+   to give it structure and order, so that in this way the value of a character can be
+   defined according to the user and not to much on the actual numeric value of the 
+   character.
+
+## `interpreter` program
+This program simply uses a `vector` to store the words that need to be translated. The
+choice of using this structure is because inserting items takes `O(1)` time, contrary to
+a linked list where insertion takes `O(n)` time.
+
 
 # Tests
 ## `MorseKey`
