@@ -7,6 +7,8 @@
 
 #include "lib/morse_code.h"
 
+#define MAX_OPTION 5
+
 typedef std::string str;
 typedef unsigned int u32;
 
@@ -15,8 +17,11 @@ class InterpreterUI {
         MorseCode morse;
 
         void menu(u32&);
-        void read_morse(str);
+        void read_morse();
         void create_morse();
+        void write_morse();
+        void translate_utf8_to_morse();
+        void translate_morse_to_utf8();
     public:
         InterpreterUI();
 
