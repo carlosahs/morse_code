@@ -177,10 +177,11 @@ void MorseCode::print(MorseNode* node, str level, bool right_left) {
 void MorseCode::write_helper(MorseNode* node, std::ofstream& file_stream) {
     if (node != 0) {
         write_helper(node->left, file_stream);
-        write_helper(node->right, file_stream);
 
         file_stream << node->key.utf8 << " "
                     << node->key.get_signals() << "\n";
+
+        write_helper(node->right, file_stream);
     }
 }
 
