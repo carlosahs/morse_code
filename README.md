@@ -1,4 +1,4 @@
-# Morse code generator
+# Morse code interpreter
 This program allows you to create your own morse code system or easily use the
 standard Morse code.
 
