@@ -8,6 +8,8 @@ MorseCode::MorseCode() {
 MorseCode::~MorseCode() {
     delete root;
     root = 0;
+
+    utf8_to_key.clear();
 }
 // <<< constructore definitions
 
@@ -265,6 +267,8 @@ void MorseCode::read_morse_code(str fname) {
 void MorseCode::clear() {
     delete root;
     root = 0;
+
+    utf8_to_key.clear();
 }
 
 str MorseCode::retrieve_by_utf8(char utf8, bool& retrieved) {
