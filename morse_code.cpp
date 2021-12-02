@@ -17,6 +17,8 @@ MorseCode::~MorseCode() {
 void MorseCode::add(MorseKey key, MorseNode*& node) {
     if (!utf8_to_key.count(key.utf8)) {
         utf8_to_key[key.utf8] = key.get_signals();
+    } else if (utf8_to_key[key.utf8] != key.get_signals()) {
+        return;
     }
 
     if (node == 0) {
