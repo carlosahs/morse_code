@@ -34,5 +34,13 @@ int main() {
 
     morse.print_morse();
 
+    morse.clear();
+
+    morse.print_morse();
+
+    morse.read_morse_code("international_morse_code.txt");
+
+    morse.print_morse();
+
     return 0;
 }
