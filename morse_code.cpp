@@ -173,21 +173,6 @@ void MorseCode::print(MorseNode* node, str level, bool right_left) {
 void MorseCode::retrieve(MorseKey key, MorseNode* node) {
 }
 
-void MorseCode::key_from_str(MorseSignal key[MORSE_KEY_LIMIT], str signals) {
-    for (int i = 0; i < signals.size(); i++) {
-        switch (signals.at(i)) {
-            case '.':
-                key[i] = DOT;
-                break;
-            case '_':
-                key[i] = DASH;
-                break;
-            default:
-                break;
-        }
-    }
-}
-
 int MorseCode::max_height(int a, int b) {
     return (a > b) ? a : b;
 }
@@ -228,20 +213,6 @@ void MorseCode::delete_key(MorseKey key) {
     delete_(key, root);
 }
 
-void MorseCode::retrieve_by_utf8(char utf8) {
-    if (utf8_to_key.count(utf8)) {
-        MorseSignal key[MORSE_KEY_LIMIT] = { NONE };
-        str signals = utf8_to_key[utf8];
-
-        retrieve(MorseKey(utf8, signals), root);
-    } else {
-        std::cout << "Character is not part of this Morse code\n";
-    }
-}
-
-void MorseCode::retrieve_by_key(str signals) {
-}
-
 void MorseCode::print_morse() {
     print(root, "", true);
 }
@@ -276,5 +247,21 @@ void MorseCode::read_morse_code(str fname) {
 void MorseCode::clear() {
     delete root;
     root = 0;
+}
+
+str MorseCode::retrieve_by_utf8(char utf8, bool& retrieved) {
+    if (utf8_to_key.count(utf8)) {
+        str signals = utf8_to_key[utf8];
+
+        return signals;
+    } else {
+        retrieved = false;
+        std::cout << "Character is not part of this Morse code\n";
+    }
+
+    return "";
+}
+
+char MorseCode::retrieve_by_key(str signals, bool& retrieved) {
 }
 // <<< public methods

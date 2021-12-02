@@ -25,25 +25,27 @@ class MorseCode {
         void right_rotate(MorseNode*&);
         void delete_(MorseKey, MorseNode*&);
         void print(MorseNode*, str, bool);
-        void retrieve(MorseKey, MorseNode*);
-        void key_from_str(MorseSignal[MORSE_KEY_LIMIT], str);
 
         int max_height(int, int);
         int balance_factor(MorseNode*);
         int get_node_height(MorseNode*);
 
         MorseNode* min_key_node(MorseNode*);
+
+        char retrieve(MorseKey, MorseNode*);
     public:
         MorseCode();
         ~MorseCode();
 
         void add_key(MorseKey);
         void delete_key(MorseKey);
-        void retrieve_by_utf8(char);
-        void retrieve_by_key(str);
         void print_morse();
         void read_morse_code(str);
         void clear();
+
+        str retrieve_by_utf8(char, bool&);
+
+        char retrieve_by_key(str, bool&);
 };
 
 #endif
