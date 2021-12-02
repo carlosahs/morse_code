@@ -5,6 +5,23 @@ MorseKey::MorseKey() {
     utf8 = ' ';
 }
 
+MorseKey::MorseKey(std::string signals) {
+    if (signals.size() <= MORSE_KEY_LIMIT && signals.size() > 0) {
+        for (int i = 0; i < signals.size(); i++) {
+            switch (signals.at(i)) {
+                case '.':
+                    key[i] = DOT;
+                    break;
+                case '_':
+                    key[i] = DASH;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
+
 MorseKey::MorseKey(char symbol, std::string signals) {
     utf8 = symbol;
     

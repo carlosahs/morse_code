@@ -27,6 +27,7 @@ class MorseKey {
 
         bool equality_helper(const MorseKey& morse_key);
 
+        MorseKey(str);
         MorseKey(char, str);
 
         friend class MorseNode;
