@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "../../morse_key.h"
+#include "../../lib/morse_key.h"
 
 typedef std::string str;
 

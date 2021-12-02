@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 
-#include "../../morse_code.h"
-#include "../../morse_node.h"
-#include "../../morse_key.h"
+#include "../../lib/morse_code.h"
+#include "../../lib/morse_node.h"
+#include "../../lib/morse_key.h"
 
 int main() {
     MorseCode morse;
