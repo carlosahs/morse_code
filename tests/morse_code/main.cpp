@@ -34,13 +34,31 @@ int main() {
 
     morse.print_morse();
 
+    // test clearing
     morse.clear();
 
     morse.print_morse();
 
+    // test if file is read correctly
     morse.read_morse_code("international_morse_code.txt");
 
     morse.print_morse();
+
+    // test retrieval of keys
+    bool retrieved = true;
+
+    std::string signals = morse.retrieve_by_utf8('a', retrieved);
+
+    if (retrieved) {
+        std::cout << signals << "\n";
+        if (signals == "._") {
+            std::cout << "SUCCESS: 'a' key was retrieved successfully\n";
+        } else {
+            std::cout << "FAILED: 'a' key was not retrieved successfully\n";
+        }
+    } else {
+        std::cout << "FAILED: 'a' should be in Morse code\n";
+    }
 
     return 0;
 }

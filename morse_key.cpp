@@ -3,9 +3,13 @@
 // >>> Constructor definitions
 MorseKey::MorseKey() {
     utf8 = ' ';
+
+    initialize_key();
 }
 
 MorseKey::MorseKey(std::string signals) {
+    initialize_key();
+
     if (signals.size() <= MORSE_KEY_LIMIT && signals.size() > 0) {
         for (int i = 0; i < signals.size(); i++) {
             switch (signals.at(i)) {
@@ -24,6 +28,8 @@ MorseKey::MorseKey(std::string signals) {
 
 MorseKey::MorseKey(char symbol, std::string signals) {
     utf8 = symbol;
+
+    initialize_key();
     
     if (signals.size() <= MORSE_KEY_LIMIT && signals.size() > 0) {
         for (int i = 0; i < signals.size(); i++) {
@@ -43,6 +49,8 @@ MorseKey::MorseKey(char symbol, std::string signals) {
 
 MorseKey::MorseKey(char symbol, std::string signals, bool& success) {
     utf8 = symbol;
+
+    initialize_key();
     
     if (signals.size() <= MORSE_KEY_LIMIT && signals.size() > 0) {
         for (int i = 0; i < signals.size(); i++) {
@@ -88,6 +96,12 @@ bool MorseKey::equality_helper(const MorseKey& morse_key) {
 
     return false;
 }
+
+void MorseKey::initialize_key() {
+    for (int i = 0; i < MORSE_KEY_LIMIT; i++) {
+        key[i] = NONE;
+    }
+}
 // <<< private methods definition
 
 // >>> public methods definitions
@@ -96,22 +110,22 @@ char MorseKey::get_utf8() {
 }
 
 str MorseKey::get_signals() {
-    str signals = "";
+    std::stringstream signals("");
 
     for (int i = 0; i < MORSE_KEY_LIMIT; i++) {
         switch (key[i]) {
             case DASH:
-                signals += "_";
+                signals << "_";
                 break;
             case DOT:
-                signals += ".";
+                signals << ".";
                 break;
             case NONE:
                 break;
         }
     }
 
-    return signals;
+    return signals.str();
 }
 // <<< public methods definitions
 

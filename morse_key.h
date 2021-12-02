@@ -2,6 +2,7 @@
 #define MORSE_KEY_H
 
 #include <string>
+#include <sstream>
 
 #define MORSE_KEY_LIMIT 8
 
@@ -23,9 +24,11 @@ enum MorseSignal {
 class MorseKey {
     private:
         char utf8;
-        MorseSignal key[MORSE_KEY_LIMIT] = { NONE };
+        MorseSignal key[MORSE_KEY_LIMIT];
 
         bool equality_helper(const MorseKey& morse_key);
+
+        void initialize_key();
 
         MorseKey(str);
         MorseKey(char, str);
