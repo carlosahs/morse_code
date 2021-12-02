@@ -164,6 +164,10 @@ void MorseCode::print(MorseNode* node, str level, bool right_left) {
         print(node->left, level, false);
         print(node->right, level, true);
     }
+
+    if (root == 0) {
+        std::cout << "Morse code is empty\n";
+    }
 }
 
 void MorseCode::retrieve(MorseKey key, MorseNode* node) {
