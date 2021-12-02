@@ -209,13 +209,15 @@ char MorseCode::retrieve(MorseKey& key, MorseNode* node, bool& retrieved) {
     // anonymous keys require to be assigned a char after initialization
     key.utf8 = node->key.utf8;
 
+    if (key == node->key) {
+        return key.utf8;
+    }
+
     if (key < node->key) {
         return retrieve(key, node->left, retrieved);
-    } else if (key > node->key) {
-        return retrieve(key, node->right, retrieved);
     } else {
-        // then the keys are equal
-        return key.utf8;
+        // las possibility is that the key is greater than node's
+        return retrieve(key, node->right, retrieved);
     }
 }
 // <<< private methods
