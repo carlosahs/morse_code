@@ -23,13 +23,13 @@ class InterpreterUI {
         void read_morse(bool&);
         void create_morse(bool&);
         void write_morse(bool&);
-        void translate_utf8_to_morse(bool&);
-        void translate_morse_to_utf8(bool&);
+        void translate_utf8_to_morse();
+        void translate_morse_to_utf8();
+        void utf8_to_morse(char, std::vector<str>&);
+        void morse_to_utf8(str, std::vector<char>&);
     public:
         InterpreterUI();
 
-        void utf8_to_morse(char, std::vector<str>&);
-        void morse_to_utf8(str, std::vector<char>&);
         void start();
 };
 

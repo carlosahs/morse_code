@@ -116,9 +116,49 @@ void InterpreterUI::write_morse(bool& success) {
 
     std::cout << "...File was written\n";
 }
-// <<< private methods
 
-// >>> public methods
+void InterpreterUI::translate_utf8_to_morse() {
+    std::vector<str> message;
+    char utf8;
+
+    std::cout << "...Please type your message: \n";
+
+    while (std::cin >> utf8 && std::cin.peek() != '\n') {
+        utf8_to_morse(utf8, message);
+    }
+
+    utf8_to_morse(utf8, message);
+
+    std::cout << "...Your message in Morse code is: \n";
+
+    for (str morse_signal : message) {
+        std::cout << morse_signal << " ";
+    }
+
+    std::cout << "\n";
+}
+
+void InterpreterUI::translate_morse_to_utf8() {
+    std::vector<char> message;
+    str morse_signal;
+
+    std::cout << "...Please type your message in Morse code: \n";
+
+    while (std::cin >> morse_signal && std::cin.peek() != '\n') {
+        morse_to_utf8(morse_signal, message);
+    }
+
+    morse_to_utf8(morse_signal, message);
+
+    std::cout << "...Your message is translated as: \n";
+
+    for (char utf8 : message) {
+        std::cout << utf8 << " ";
+    }
+
+    std::cout << "\n";
+}
+
 void InterpreterUI::utf8_to_morse(char utf8, std::vector<str>& message) {
     bool retrieved = true;
     str morse_signal = morse.retrieve_by_utf8(utf8, retrieved);
@@ -146,7 +186,9 @@ void InterpreterUI::morse_to_utf8(str morse_signal, std::vector<char>& message) 
         message.push_back('?');
     }
 }
+// <<< private methods
 
+// >>> public methods
 void InterpreterUI::start() {
     u32 option = 1;
 
