@@ -158,7 +158,12 @@ bool MorseKey::operator>(const MorseKey& morse_key) {
                     return true;
             }
         case DASH:
-            return true;
+            switch (morse_key.key[nth_signal]) {
+                case DASH:
+                    return false;
+                case DOT: case NONE:
+                    return true;
+            }
         case NONE:
             return false;
     }
@@ -186,7 +191,12 @@ bool MorseKey::operator<(const MorseKey& morse_key) {
         case DASH:
             return false;
         case NONE:
-            return true;
+            switch (morse_key.key[nth_signal]) {
+                case DASH: case DOT:
+                    return true;
+                case NONE:
+                    return false;
+            }
     }
 }
 // <<< operator overloading definitions
