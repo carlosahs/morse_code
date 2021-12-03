@@ -18,6 +18,7 @@ void InterpreterUI::menu(u32& option) {
         std::cout << "(4) Translate message from utf8 to Morse code\n";
         std::cout << "(5) Translate message from Morse code to utf8\n";
         std::cout << "(6) Clear Morse code\n";
+        std::cout << "(7) Compare Morse code\n";
 
         std::cin >> option;
 
