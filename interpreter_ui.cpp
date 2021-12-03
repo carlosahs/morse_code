@@ -122,6 +122,12 @@ void InterpreterUI::clear_morse() {
 }
 
 void InterpreterUI::translate_utf8_to_morse() {
+    if (morse.empty()) {
+        std::cout << "WARNING: Morse code is empty, "
+                  << "translations are not possible\n";
+        return;
+    }
+
     std::vector<str> message;
     char utf8;
 
@@ -143,6 +149,12 @@ void InterpreterUI::translate_utf8_to_morse() {
 }
 
 void InterpreterUI::translate_morse_to_utf8() {
+    if (morse.empty()) {
+        std::cout << "WARNING: Morse code is empty, "
+                  << "translations are not possible\n";
+        return;
+    }
+
     std::vector<char> message;
     str morse_signal;
 
