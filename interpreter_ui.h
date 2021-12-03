@@ -8,7 +8,7 @@
 #include "lib/morse_code.h"
 #include "lib/morse_key.h"
 
-#define MAX_OPTION 5
+#define MAX_OPTION 6
 
 typedef std::string str;
 typedef unsigned int u32;
@@ -23,6 +23,7 @@ class InterpreterUI {
         void read_morse(bool&);
         void create_morse(bool&);
         void write_morse(bool&);
+        void clear_morse();
         void translate_utf8_to_morse();
         void translate_morse_to_utf8();
         void utf8_to_morse(char, std::vector<str>&);

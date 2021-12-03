@@ -6,7 +6,6 @@ InterpreterUI::InterpreterUI() {
 }
 // <<< constructor definitions
 
-
 // >>> private methods
 void InterpreterUI::menu(u32& option) {
     option = 0;
@@ -18,6 +17,7 @@ void InterpreterUI::menu(u32& option) {
         std::cout << "(3) Write Morse code to file\n";
         std::cout << "(4) Translate message from utf8 to Morse code\n";
         std::cout << "(5) Translate message from Morse code to utf8\n";
+        std::cout << "(6) Clear Morse code\n";
 
         std::cin >> option;
 
@@ -115,6 +115,10 @@ void InterpreterUI::write_morse(bool& success) {
     morse.write_morse_code(fname);
 
     std::cout << "...File was written\n";
+}
+
+void InterpreterUI::clear_morse() {
+    morse.clear();
 }
 
 void InterpreterUI::translate_utf8_to_morse() {
