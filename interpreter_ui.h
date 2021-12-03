@@ -1,6 +1,7 @@
 #ifndef INTERPRETER_UI_H
 #define INTERPRETER_UI_H
 
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,6 +25,7 @@ class InterpreterUI {
         void create_morse(bool&);
         void write_morse(bool&);
         void clear_morse();
+        void compare_morse();
         void translate_utf8_to_morse();
         void translate_morse_to_utf8();
         void utf8_to_morse(char, std::vector<str>&);
