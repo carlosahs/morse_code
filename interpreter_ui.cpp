@@ -105,6 +105,8 @@ void InterpreterUI::write_morse(bool& success) {
 
         std::cout << "WARNING: The Morse code is empty\n";
         std::cout << "...Nothing will be written\n";
+
+        return;
     }
 
     std::cout << "Type name of file (e.g. 'my_morse.txt')\n";
