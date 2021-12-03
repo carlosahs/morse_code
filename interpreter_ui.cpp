@@ -229,6 +229,9 @@ void InterpreterUI::start() {
             case 5:
                 translate_morse_to_utf8();
                 break;
+            case 6:
+                clear_morse();
+                break;
             default:
                 break;
         }
