@@ -185,6 +185,16 @@ void MorseCode::write_helper(MorseNode* node, std::ofstream& file_stream) {
     }
 }
 
+void MorseCode::get_utf8s_helper(MorseNode* node, std::vector<char>& utf8s) {
+    if (node != 0) {
+        get_utf8s_helper(node->left, utf8s);
+
+        utf8s.push_back(node->key.utf8);
+
+        get_utf8s_helper(node->right, utf8s);
+    }
+}
+
 int MorseCode::max_height(int a, int b) {
     return (a > b) ? a : b;
 }
@@ -318,5 +328,13 @@ bool MorseCode::empty() {
     }
 
     return false;
+}
+
+std::vector<char> MorseCode::get_utf8s() {
+    std::vector<char> utf8s;
+
+    get_utf8s_helper(root, utf8s);
+
+    return utf8s;
 }
 // <<< public methods

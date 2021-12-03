@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <unordered_map>
+#include <vector>
 
 #include "morse_key.h"
 #include "morse_node.h"
@@ -26,6 +27,7 @@ class MorseCode {
         void delete_(MorseKey, MorseNode*&);
         void print(MorseNode*, str, bool);
         void write_helper(MorseNode*, std::ofstream&);
+        void get_utf8s_helper(MorseNode*, std::vector<char>&);
 
         int max_height(int, int);
         int balance_factor(MorseNode*);
@@ -50,6 +52,8 @@ class MorseCode {
         char retrieve_by_key(str, bool&);
 
         bool empty();
+
+        std::vector<char> get_utf8s();
 };
 
 #endif
