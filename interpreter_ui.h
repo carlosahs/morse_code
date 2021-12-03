@@ -9,7 +9,7 @@
 #include "lib/morse_code.h"
 #include "lib/morse_key.h"
 
-#define MAX_OPTION 6
+#define MAX_OPTION 7
 
 typedef std::string str;
 typedef unsigned int u32;

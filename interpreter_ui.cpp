@@ -123,6 +123,66 @@ void InterpreterUI::clear_morse() {
     morse.clear();
 }
 
+void InterpreterUI::compare_morse() {
+    if (morse.empty()) {
+        std::cout << "WARNING: Morse code is empty, "
+                  << "comparison is not possible\n";
+        return;
+    }
+
+    std::cout << "Enter name of the file containing Morse code "
+              << "to compare (e.g. 'my_morse.txt'):\n";
+
+    str fname;
+    std::cin >> fname;
+
+    MorseCode cmp_morse;
+    cmp_morse.read_morse_code(fname);
+
+    if (cmp_morse.empty()) {
+        std::cout << "WARNING: File is empty or does not exists\n";
+        std::cout << "...Comparison is not possible\n";
+
+        return;
+    }
+
+    std::vector<char> morse_utf8s = morse.get_utf8s();
+    std::vector<char> cmp_utf8s = cmp_morse.get_utf8s();
+
+    // sort vectors
+    std::sort(morse_utf8s.begin(), morse_utf8s.end());
+    std::sort(cmp_utf8s.begin(), cmp_utf8s.end());
+
+    std::vector<char> same_utf8s;
+    u32 s_point = 0; // starting point
+
+    // identify all the characters that are the same in both arrays
+    for (u32 i = 0; i < morse_utf8s.size(); i++) {
+        for (u32 j = s_point; j < cmp_utf8s.size(); j++) {
+            if (morse_utf8s[i] < cmp_utf8s[j]) {
+                s_point = j;
+                break;
+            } else if (morse_utf8s[i] == cmp_utf8s[j]) {
+                same_utf8s.push_back(morse_utf8s[i]);
+                s_point = j + 1;
+                break;
+            } else if (morse_utf8s[i] > cmp_utf8s[j]) {
+                // do nothing
+            }
+        }
+    }
+
+    std::ofstream file_stream;
+
+    file_stream.open(DEFAULT_COMPARISON_FILE);
+
+    for (char utf8 : same_utf8s) {
+        file_stream << utf8 << "\n";
+    }
+
+    file_stream.close();
+}
+
 void InterpreterUI::translate_utf8_to_morse() {
     if (morse.empty()) {
         std::cout << "WARNING: Morse code is empty, "
@@ -233,6 +293,9 @@ void InterpreterUI::start() {
                 break;
             case 6:
                 clear_morse();
+                break;
+            case 7:
+                compare_morse();
                 break;
             default:
                 break;
