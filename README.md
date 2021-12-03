@@ -17,6 +17,70 @@ g++ -std=c++14 -O2 interpreter.cpp interpreter_ui.cpp lib/*.cpp
 After running the program, it will display a menu from which the user can select the
 options that finds useful.
 
+### `read_morse` method
+Reads the Morse code inside a non-binary file. This method has a time complexity of
+`O(n lg n)`, where `n` is the number of lines in the file; although the number of 
+nodes in the AVL tree changes every time a new line is read, so that insertion takes
+`O(lg m)` time, where `m` is the number of nodes in the tree in a given line reading,
+the number of nodes of the tree eventually is the number of lines in the file, thus
+insertion can be considered to take `O(lg n)` time.
+
+### `create_morse` method
+Inserts a new Morse key to the Morse code. Since the Morse code uses an AVL tree, then
+this method has time complexity of `O(lg n)`, where `n` is number of nodes of the tree.
+
+### `write_morse` method
+The writing to a file is performed by traversing the tree in preorder, so they are 
+ordered in the file. This traversing takes `O(n)` time, since it needs to check every
+node of the three.
+
+### `translate_utf8_to_morse` method
+Since the retrieval of Morse signal by character in the Morse code is achieved by a
+hash map, this operation takes `O(n)` time, where `n` is the number of characters in
+the message of the user.
+
+### `translate_morse_to_utf8` method
+The retrieval of a character by a Morse signal is perfomed by findind the node in the
+AVL tree of the Morse code, thus its time complexity is `O(n lg m)` time, where `n`
+is the number of Morse signals in the message of the user and `m` the number of
+nodes in the Morse code.
+
+### `clear_morse` method
+This method simply calls the `clear` method of the Morse code, which takes `O(n)`
+time since it needs to delete every node in the tree.
+
+## `compare_morse` method
+Sorting is implemented in this method to correctly identify the characters that 
+are part of two Morse codes, similar to the union of a set in mathematics. The 
+sorting is performed by C++ STL `std::sort` API on a vector of characters and it has 
+a time complexity of `O(n lg n)`.
+
+The union of the Morse codes is performed in `O(n + m)` time using 
+this code:
+```cpp
+// identify all the characters that are the same in both arrays
+for (u32 i = 0; i < morse_utf8s.size(); i++) {
+    for (u32 j = s_point; j < cmp_utf8s.size(); j++) {
+        if (morse_utf8s[i] < cmp_utf8s[j]) {
+            s_point = j;
+            break;
+        } else if (morse_utf8s[i] == cmp_utf8s[j]) {
+            same_utf8s.push_back(morse_utf8s[i]);
+            s_point = j + 1;
+            break;
+        } else if (morse_utf8s[i] > cmp_utf8s[j]) {
+            // do nothing
+        }
+    }
+}
+```
+
+The time complexity of the above algorithm is `O(n + m)` because it compares two
+arrays of size `n` and `m` by iterating over the array in the inner loop just `m`
+times by keeping track of the last index where the two arrays had the same value.
+Due to the former, the inner loop actually iterates over its array only once, while
+the outer loop simply iterates over the `n` elements of its array.
+
 # Data structures I used
 ## `MorseCode`
 The Morse code was implemented using an AVL tree so that the tree is the most
@@ -55,38 +119,6 @@ to use a `vector` was made based on the following advantages it has over `list`:
   wants to translate, which consist of a sentence in most cases.
 * For a relatively small number of elements, `vector` is faster than `list` in 
   searching and insertion operations, which take `O(1)` time.
-
-### `compare_morse` method
-Sorting is implemented in this method to correctly identify the characters that 
-are part of two Morse codes, similar to the union of a set in mathematics. The 
-sorting is performed by C++ STL `std::sort` API on a vector of characters and it has 
-a time complexity of `O(n lg n)`.
-
-The union of the Morse codes is performed in `O(n + m)` time using 
-this code:
-```cpp
-// identify all the characters that are the same in both arrays
-for (u32 i = 0; i < morse_utf8s.size(); i++) {
-    for (u32 j = s_point; j < cmp_utf8s.size(); j++) {
-        if (morse_utf8s[i] < cmp_utf8s[j]) {
-            s_point = j;
-            break;
-        } else if (morse_utf8s[i] == cmp_utf8s[j]) {
-            same_utf8s.push_back(morse_utf8s[i]);
-            s_point = j + 1;
-            break;
-        } else if (morse_utf8s[i] > cmp_utf8s[j]) {
-            // do nothing
-        }
-    }
-}
-```
-
-The time complexity of the above algorithm is `O(n + m)` because it compares two
-arrays of size `n` and `m` by iterating over the array in the inner loop just `m`
-times by keeping track of the last index where the two arrays had the same value.
-Due to the former, the inner loop actually iterates over its array only once, while
-the outer loop simply iterates over the `n` elements of its array.
 
 # Tests
 ## `MorseKey`
