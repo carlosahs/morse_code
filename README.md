@@ -48,11 +48,14 @@ to the following points:
   gives structure to the Morse code and offers relatively fast insertion, deletion, 
   and searching `O(lg n)` times compared to the `O(1)` times of a hash map.
 
-## `interpreter` program
-This program simply uses a `vector` to store the words that need to be translated. The
-choice of using this structure is because inserting items takes `O(1)` time, contrary to
-a linked list where insertion takes `O(n)` time.
-
+## `InterpreterUI` program
+The program implements a `vector` when performing translation operations. The decision
+to use a `vector` was made based on its average insertion time of `O(1)` because of its 
+implementation: Using regular C++ arrays that are replaced by larger ones when the 
+current array is filled, copying each element of the filled array to the new larger
+array, taking `O(n)` time. Another consideration was that since any message the user
+enters is probably not going to be considerably large, then the `O(n)` operation of
+`vector` when filled is an acceptable time complexity.
 
 # Tests
 ## `MorseKey`
