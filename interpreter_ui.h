@@ -15,6 +15,7 @@ typedef std::string str;
 typedef unsigned int u32;
 
 const str DEFAULT_MORSE_FILE = "international_morse_code.txt";
+const str DEFAULT_COMPARISON_FILE = "comparison_results.txt";
 
 class InterpreterUI {
     private:
