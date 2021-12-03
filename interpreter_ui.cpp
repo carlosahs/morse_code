@@ -117,11 +117,13 @@ void InterpreterUI::write_morse(bool& success) {
 
     morse.write_morse_code(fname);
 
-    std::cout << "...File was written\n";
+    std::cout << "...File '" << fname << "' was written\n";
 }
 
 void InterpreterUI::clear_morse() {
     morse.clear();
+
+    std::cout << "Morse code was cleared, now it is empty\n";
 }
 
 void InterpreterUI::compare_morse() {
@@ -182,6 +184,11 @@ void InterpreterUI::compare_morse() {
     }
 
     file_stream.close();
+
+    std::cout << "Characters that are the same in both Morse codes "
+              << "were written to '"
+              << DEFAULT_COMPARISON_FILE
+              << "' file\n";
 }
 
 void InterpreterUI::translate_utf8_to_morse() {
