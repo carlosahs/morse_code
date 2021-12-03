@@ -1,11 +1,7 @@
-This program allows you to create your own morse code system or easily use the
-standard Morse code.
-
-The program operates using an AVL binary search tree that orders each of the Morse
-symbols added by the user and those specified by the international Morse code.
-The AVL binary search tree is required since it is important that the tree is
-completely balanced so that the Morse symbols are correctly layout and quickly
-accessed with a time complexity of `O(n * log n)`.
+# Morse code
+This program provides utilities to write a custom Morse code, read a Morse code from
+a file, and write a Morse code to a file. It achieves this by storing the Morse code
+in an AVL tree so that each value can be assigned a custom order.
 
 # Morse code interpreter
 This program allows the user to translate a message in plain english to Morse code.
@@ -18,31 +14,39 @@ g++ -std=c++14 -O2 interpreter.cpp interpreter_ui.cpp lib/*.cpp
 ```
 
 ## Usage
-The interpreter is able to read a file containing a Morse code standard and then be 
-able to translate from English to that Morse code standard.
-
-To create your own Morse code standard simply copy `internation_morse_code.txt` to
-a `txt` file and modify the Morse keys.
-
-# Morse code translator
+After running the program, it will display a menu from which the user can select the
+ones that finds useful.
 
 # Data structures I used
 ## `MorseCode`
-I implemented an AVL tree so that the structure of any Morse code is balanced as it
-should be. The implementation of this tree also helps to get `O(lg n)` time on 
-insertion, deletion, and search operations.
+The Morse code was implemented using an AVL tree so that the tree is the most
+balanced, this is because it allows for insertion, deletion, and search operations
+in `O(lg n)`. Additionally the structure of a balanced tree helps to the organization
+of a Morse code standard.
 
-The code allows a user to access a Morse key by a string of signals in `O(lg n)` time, 
-while it also allows them to retrieve a Morse key by a character in `O(1)` time. The 
-latter is achieved by implementing a hash map (`std::unordered_map`). But, why 
-implement a hash map to retrieve a Morse key by a character and then an AVL tree to
-retrieve a Morse key a string of Morse code? This decision was made to:
-1. Identify attempts to insert a Morse key with the same character but a different
-   Morse code into the tree in `O(1)` time.
-2. The purpose of storing the Morse code in an AVL tree by a string of Morse code is 
-   to give it structure and order, so that in this way the value of a character can be
-   defined according to the user and not too much on the actual numeric value of the 
-   character.
+Furthermore, `MorseCode` also implements a growable hash map through the 
+`std::unordered_map` C++ STL API. The decision to use this structure was made according
+to the following points:
+* The use of a hash maps helps identify duplicate Morse keys that have the same utf8
+  character but a different morse signal, thus avoiding the Morse code to have duplicate
+  values. Implementing this without the use of a hash map makes code more difficult.
+* `MorseCode` inserts Morse keys according to a comparison between their signals
+  (with the exception of the `==` and `!=` operators that also compare the utf8 
+  character). Because of this, retrieving a Morse key by character is harder, since the
+  tree is implemented so that retrieval is performed with a Morse signal, hence using
+  a hash map solves this issue.
+* The latter point can be refuted by proposing the use of only hash maps for both the
+  retrieval of Morse keys by character and by Morse signal. However, doing this 
+  destroys the structure of the Morse code, making it impossible to determine how
+  a Morse key can be compared with another.
+
+  For example, the international Morse code standard assigns the `._` Morse signal to
+  `a`, `_...` to `b`, `_._.` to `c` and so on according to the standard. Intuitively,
+  the ordering may appear to be `a`, `b`, `c`, and so on. However, if
+  this standard is ordered, in fact the first character is `e` with a Morse signal of
+  `.` and second is `i` with a Morse signal of `..`. Thus, implementing an AVL tree
+  gives structure to the Morse code and offers relatively fast insertion, deletion, 
+  and searching `O(lg n)` times compared to the `O(1)` times of a hash map.
 
 ## `interpreter` program
 This program simply uses a `vector` to store the words that need to be translated. The
