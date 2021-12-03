@@ -62,7 +62,7 @@ enters is probably not going to be considerably large, then the `O(n)` operation
 To compile and run the tests for `MorseKey`, from the root directory run
 ```
 cd tests/morse_key/
-g++ -std=c++14 -O2 main.cpp ../../lib/*.cpp
+g++ -std=c++14 -O2 main.cpp ../../lib/morse_key.cpp
 ./a.out
 ```
 
@@ -70,7 +70,7 @@ g++ -std=c++14 -O2 main.cpp ../../lib/*.cpp
 To compile and run the tests for `MorseCode`, from the root directory run
 ```
 cd tests/morse_code/
-g++ -std=c++14 -O2 main.cpp ../../lib/morse_key.cpp
+g++ -std=c++14 -O2 main.cpp ../../lib/*.cpp
 ./a.out
 ```
 
