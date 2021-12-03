@@ -15,7 +15,7 @@ g++ -std=c++14 -O2 interpreter.cpp interpreter_ui.cpp lib/*.cpp
 
 ## Usage
 After running the program, it will display a menu from which the user can select the
-ones that finds useful.
+options that finds useful.
 
 # Data structures I used
 ## `MorseCode`
@@ -50,12 +50,11 @@ to the following points:
 
 ## `InterpreterUI` program
 The program implements a `vector` when performing translation operations. The decision
-to use a `vector` was made based on its average insertion time of `O(1)` because of its 
-implementation: Using regular C++ arrays that are replaced by larger ones when the 
-current array is filled, copying each element of the filled array to the new larger
-array, taking `O(n)` time. Another consideration was that since any message the user
-enters is probably not going to be considerably large, then the `O(n)` operation of
-`vector` when filled is an acceptable time complexity.
+to use a `vector` was made based on the following advantages it has over `list`:
+* It uses less memory, so it is more convenient to use to store the data the user
+  wants to translate, which consist of a sentence in most cases.
+* For a relatively small number of elements, `vector` is faster than `list` in 
+  searching and insertion operations, which take `O(1)` time.
 
 # Tests
 ## `MorseKey`
