@@ -56,6 +56,38 @@ to use a `vector` was made based on the following advantages it has over `list`:
 * For a relatively small number of elements, `vector` is faster than `list` in 
   searching and insertion operations, which take `O(1)` time.
 
+### `compare_morse` method
+Sorting is implemented in this method to correctly identify the characters that 
+are part of two Morse codes, similar to the union of a set in mathematics. The 
+sorting is performed by C++ STL `std::sort` API on a vector of characters and it has 
+a time complexity of `O(n lg n)`.
+
+The union of the Morse codes is performed in `O(n + m)` time using 
+this code:
+```cpp
+// identify all the characters that are the same in both arrays
+for (u32 i = 0; i < morse_utf8s.size(); i++) {
+    for (u32 j = s_point; j < cmp_utf8s.size(); j++) {
+        if (morse_utf8s[i] < cmp_utf8s[j]) {
+            s_point = j;
+            break;
+        } else if (morse_utf8s[i] == cmp_utf8s[j]) {
+            same_utf8s.push_back(morse_utf8s[i]);
+            s_point = j + 1;
+            break;
+        } else if (morse_utf8s[i] > cmp_utf8s[j]) {
+            // do nothing
+        }
+    }
+}
+```
+
+The time complexity of the above algorithm is `O(n + m)` because it compares two
+arrays of size `n` and `m` by iterating over the array in the inner loop just `m`
+times by keeping track of the last index where the two arrays had the same value.
+Due to the former, the inner loop actually iterates over its array only once, while
+the outer loop simply iterates over the `n` elements of its array.
+
 # Tests
 ## `MorseKey`
 To compile and run the tests for `MorseKey`, from the root directory run
