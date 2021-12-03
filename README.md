@@ -13,8 +13,8 @@ This program allows the user to translate a message in plain english to Morse co
 ## Compilation instructions
 From the root directory run
 ```
-g++ -std=c++14 -O2 interpreter.cpp lib/*.cpp
-./interpreter
+g++ -std=c++14 -O2 interpreter.cpp interpreter_ui.cpp lib/*.cpp
+./a.out
 ```
 
 ## Usage
